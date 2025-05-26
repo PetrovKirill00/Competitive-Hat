@@ -26,7 +26,7 @@ const auto boostIO = []() {
 
 
 signed main() {
-    int tests;
+    int tests = 1;
     while (tests --> 0) {
         read();
         solve();
