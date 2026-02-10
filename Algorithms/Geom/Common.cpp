@@ -49,13 +49,15 @@ bool parallel(const ti &one, const ti &other) {
   return (A1 == A2 && B1 == B2);
 };
 
-pii intersect(const ti &one, const ti &other) {
+pdd intersect(const ti &one, const ti &other) {
   // A1 * x + B1 * y = -C1
   // A2 * x + B2 * y = -C2
   // Метод Краммера. Детерминант равен псевдоскалярному произведению
   // двух векторов, образующих матрицу 2*2 (в двумерном случае, короче)
-  int det = skew(A1, A2, B1, B2);
-  return pii(skew(B1, -C1, B2, -C2) / det, skew(A1, -C1, A2, -C2) / det);
+  auto &[A1, B1, C1] = one;
+  auto &[A2, B2, C2] = other;
+  ld det = skew(A1, A2, B1, B2);
+  return pdd(-skew(B1, -C1, B2, -C2) / det, skew(A1, -C1, A2, -C2) / det);
 };
 
 bool clockwise(const pii &one, const pii &other) {
